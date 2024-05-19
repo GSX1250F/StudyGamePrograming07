@@ -67,7 +67,7 @@ private:
 	// 移動
 	Vector3 mPosition;		//画面上の位置(３次元）
 	float mScale;			//拡大率
-	Quaternion mRotation;		//回転（クォータニオン）
+	Quaternion mRotation;	//回転（クォータニオン）
 	float mRadius;			//半径（拡大率は無視）
 	
 	// 変換

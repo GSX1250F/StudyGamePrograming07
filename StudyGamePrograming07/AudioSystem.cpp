@@ -60,9 +60,9 @@ bool AudioSystem::Initialize()
 
 void AudioSystem::Shutdown()
 {
-	// Unload all banks
+	// すべてのバンクをアンロード
 	UnloadAllBanks();
-	// Shutdown FMOD system
+	// FMOD systemを解放
 	if (mSystem)
 	{
 		mSystem->release();
