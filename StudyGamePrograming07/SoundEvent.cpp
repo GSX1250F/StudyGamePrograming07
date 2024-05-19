@@ -126,7 +126,7 @@ bool SoundEvent::Is3D() const
 	auto event = mSystem ? mSystem->GetEventInstance(mID) : nullptr;
 	if (event)
 	{
-		// Get the event description
+		// イベント記述子を取得
 		FMOD::Studio::EventDescription* ed = nullptr;
 		event->getDescription(&ed);
 		if (ed)
@@ -141,8 +141,8 @@ namespace
 {
 	FMOD_VECTOR VecToFMOD(const Vector3& in)
 	{
-		// Convert from our coordinates (+x forward, +y right, +z up)
-		// to FMOD (+z forward, +x right, +y up)
+		// このゲームでの座標 (+x：前方向, +y：右方向, +z：上方向)を
+		// FMODでの座標に変換 (+z：前方向, +x：右方向, +y：上方向)
 		FMOD_VECTOR v;
 		v.x = in.y;
 		v.y = in.z;
@@ -157,13 +157,13 @@ void SoundEvent::Set3DAttributes(const Matrix4& worldTrans)
 	if (event)
 	{
 		FMOD_3D_ATTRIBUTES attr;
-		// Set position, forward, up
+		// 位置と方向をセットする
 		attr.position = VecToFMOD(worldTrans.GetTranslation());
-		// In world transform, first row is forward
+		// ワールド空間では第1成分が前方向
 		attr.forward = VecToFMOD(worldTrans.GetXAxis());
-		// Third row is up
+		// ワールド空間では第3成分が上方向
 		attr.up = VecToFMOD(worldTrans.GetZAxis());
-		// Set velocity to zero (fix if using Doppler effect)
+		// 速度をゼロにする (ドップラー効果を使うときは修正)
 		attr.velocity = { 0.0f, 0.0f, 0.0f };
 		event->set3DAttributes(&attr);
 	}

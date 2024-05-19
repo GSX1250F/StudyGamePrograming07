@@ -39,6 +39,7 @@ bool AudioSystem::Initialize()
 		512,						// 最大同時発音数
 		FMOD_STUDIO_INIT_NORMAL,	// デフォルト設定
 		FMOD_INIT_NORMAL,			// デフォルト設定
+		//FMOD_INIT_CHANNEL_LOWPASS,	// ローパスフィルターを初期化する
 		nullptr						// 通常はnullptr
 	);
 	if (result != FMOD_OK)
@@ -259,8 +260,8 @@ namespace
 {
 	FMOD_VECTOR VecToFMOD(const Vector3& in)
 	{
-		// Convert from our coordinates (+x forward, +y right, +z up)
-		// to FMOD (+z forward, +x right, +y up)
+		// 座標系の変換 (+x：前方向, +y：右方向, +z：上方向)
+		// to FMOD (+z：前方向, +x：右方向, +y：上方向)
 		FMOD_VECTOR v;
 		v.x = in.y;
 		v.y = in.z;
@@ -271,19 +272,19 @@ namespace
 
 void AudioSystem::SetListener(const Matrix4& viewMatrix)
 {
-	// Invert the view matrix to get the correct vectors
+	// ベクトルを得るためのビュー行列の逆行列を計算
 	Matrix4 invView = viewMatrix;
 	invView.Invert();
 	FMOD_3D_ATTRIBUTES listener;
-	// Set position, forward, up
+	// 位置を設定。
 	listener.position = VecToFMOD(invView.GetTranslation());
-	// In the inverted view, third row is forward
+	// 逆ビューでは第３成分（GetZAxis）が前方向
 	listener.forward = VecToFMOD(invView.GetZAxis());
-	// In the inverted view, second row is up
+	// 逆ビューでは第２成分（GetYAxis）が上方向
 	listener.up = VecToFMOD(invView.GetYAxis());
-	// Set velocity to zero (fix if using Doppler effect)
+	// 速度はゼロにセットする ドップラー効果を使うときは修正)
 	listener.velocity = { 0.0f, 0.0f, 0.0f };
-	// Send to FMOD
+	// FMODにおくる（0はリスナーが一人だけという意味）
 	mSystem->setListenerAttributes(0, &listener);
 }
 
