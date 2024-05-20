@@ -164,7 +164,8 @@ void SoundEvent::Set3DAttributes(const Matrix4& worldTrans)
 		// ワールド空間では第3成分が上方向
 		attr.up = VecToFMOD(worldTrans.GetZAxis());
 		// 速度をゼロにする (ドップラー効果を使うときは修正)
-		attr.velocity = { 0.0f, 0.0f, 0.0f };
+		//attr.velocity = { 0.0f, 0.0f, 0.0f };
+		attr.velocity = { 0.0f, 0.0f, -300.0f };
 		event->set3DAttributes(&attr);
 	}
 }

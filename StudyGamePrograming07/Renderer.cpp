@@ -6,7 +6,7 @@
 #include "VertexArray.h"
 #include "SpriteComponent.h"
 #include "MeshComponent.h"
-#include <GL/glew.h>
+#include <glew.h>
 
 Renderer::Renderer(Game* game)
 	:mGame(game)

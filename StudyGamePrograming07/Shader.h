@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <gl/glew.h>
+#include <glew.h>
 #include "Math.h"
 
 class Shader

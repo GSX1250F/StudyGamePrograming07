@@ -7,6 +7,7 @@
 #include "MeshComponent.h"
 #include "CameraActor.h"
 #include "PlaneActor.h"
+#include "Sphere.h"
 #include "AudioComponent.h"
 
 Game::Game()
@@ -295,13 +296,8 @@ void Game::LoadData()
 	sc->SetTexture(mRenderer->GetTexture("Assets/Radar.png"));
 
 	// Create spheres with audio components playing different sounds
-	a = new Actor(this);
-	a->SetPosition(Vector3(500.0f, -75.0f, 0.0f));
-	a->SetScale(1.0f);
-	mc = new MeshComponent(a);
-	mc->SetMesh(mRenderer->GetMesh("Assets/Sphere.gpmesh"));
-	AudioComponent* ac = new AudioComponent(a);
-	ac->PlayEvent("event:/FireLoop");
+	mSphere = new Sphere(this);
+	
 
 	// Start music
 	mMusicEvent = mAudioSystem->PlayEvent("event:/Music");

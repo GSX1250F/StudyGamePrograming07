@@ -1,11 +1,3 @@
-// ----------------------------------------------------------------
-// From Game Programming in C++ by Sanjay Madhav
-// Copyright (C) 2017 Sanjay Madhav. All rights reserved.
-// 
-// Released under the BSD License
-// See LICENSE in root directory for full details.
-// ----------------------------------------------------------------
-
 #include "CameraActor.h"
 #include "MoveComponent.h"
 #include "SDL_scancode.h"
@@ -13,19 +5,15 @@
 #include "AudioSystem.h"
 #include "Game.h"
 #include "AudioComponent.h"
-#include "MeshComponent.h"
 
 CameraActor::CameraActor(Game* game)
 	:Actor(game)
 {
 	mMoveComp = new MoveComponent(this);
 	mAudioComp = new AudioComponent(this);
-	MeshComponent* mc = new MeshComponent(this);
-	mc->SetMesh(game->GetRenderer()->GetMesh("Assets/Sphere.gpmesh"));
 	mLastFootstep = 0.0f;
 	mFootstep = mAudioComp->PlayEvent("event:/Footstep");
 	mFootstep.SetPaused(true);
-	mLengthFromTarget = 500.0f;
 }
 
 void CameraActor::UpdateActor(float deltaTime)
@@ -42,13 +30,12 @@ void CameraActor::UpdateActor(float deltaTime)
 	}
 
 	// Compute new camera from this actor
-	mCameraPos = GetPosition() - GetForward() * mLengthFromTarget + Vector3::UnitZ * 100.0f;
+	Vector3 cameraPos = GetPosition();
 	Vector3 target = GetPosition() + GetForward() * 100.0f;
 	Vector3 up = Vector3::UnitZ;
-	Matrix4 view = Matrix4::CreateLookAt(mCameraPos, target, up);
+	Matrix4 view = Matrix4::CreateLookAt(cameraPos, target, up);
 	GetGame()->GetRenderer()->SetViewMatrix(view);
 	GetGame()->GetAudioSystem()->SetListener(view);
-
 }
 
 void CameraActor::ActorInput(const uint8_t* keys)
@@ -72,8 +59,9 @@ void CameraActor::ActorInput(const uint8_t* keys)
 	{
 		angularSpeed += Math::Pi;
 	}
+
 	mMoveComp->SetVelocity(forwardSpeed * GetForward());
-	mMoveComp->SetRotSpeed(angularSpeed);	
+	mMoveComp->SetRotSpeed(angularSpeed);
 }
 
 void CameraActor::SetFootstepSurface(float value)
