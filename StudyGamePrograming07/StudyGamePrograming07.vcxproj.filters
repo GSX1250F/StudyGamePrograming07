@@ -16,18 +16,12 @@
     <Filter Include="シェーダーファイル">
       <UniqueIdentifier>{a7ab8c7b-a996-4c98-acda-efe57e843700}</UniqueIdentifier>
     </Filter>
+    <Filter Include="メッシュファイル">
+      <UniqueIdentifier>{0b8a7d6d-9c60-43ca-930c-ed260087639b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Assets\Cube.gpmesh">
-      <Filter>リソース ファイル</Filter>
-    </None>
-    <None Include="Assets\Plane.gpmesh">
-      <Filter>リソース ファイル</Filter>
-    </None>
-    <None Include="Assets\Sphere.gpmesh">
-      <Filter>リソース ファイル</Filter>
-    </None>
     <None Include="Shaders\Basic.frag">
       <Filter>シェーダーファイル</Filter>
     </None>
@@ -60,6 +54,15 @@
     </None>
     <None Include="Assets\Master Bank.strings.bank">
       <Filter>リソース ファイル</Filter>
+    </None>
+    <None Include="Assets\Cube.gpmesh">
+      <Filter>メッシュファイル</Filter>
+    </None>
+    <None Include="Assets\Plane.gpmesh">
+      <Filter>メッシュファイル</Filter>
+    </None>
+    <None Include="Assets\Sphere.gpmesh">
+      <Filter>メッシュファイル</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
