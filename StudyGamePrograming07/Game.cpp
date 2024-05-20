@@ -116,7 +116,7 @@ void Game::HandleKeyPress(int key)
 		mAudioSystem->SetBusVolume("bus:/", volume);
 		break;
 	}
-	case '=':
+	case '^':
 	{
 		// Increase master volume
 		float volume = mAudioSystem->GetBusVolume("bus:/");
