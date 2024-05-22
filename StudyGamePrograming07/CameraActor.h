@@ -18,6 +18,7 @@ private:
 	Vector3 mCameraPos;
 	SoundEvent mFootstep;
 	float mLastFootstep;
-	float mLengthFromActor;
+	float mLength1;
+	float mLength2;
 	float mHeightFromActor;
 };
