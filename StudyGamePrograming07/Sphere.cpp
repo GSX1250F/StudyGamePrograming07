@@ -26,10 +26,12 @@ Sphere::Sphere(Game* game)
 
 void Sphere::UpdateActor(float deltaTime)
 {
+	/*
 	if (GetPosition().x > 1000.0f)
 	{
 		SetPosition(Vector3(-1000.0f, -75.0f, 0.0f));
 	}
+	*/
 }
 
 void Sphere::ActorInput(const uint8_t* keys)
