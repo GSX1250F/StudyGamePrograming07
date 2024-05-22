@@ -296,12 +296,11 @@ void Game::LoadData()
 	sc = new SpriteComponent(a);
 	sc->SetTexture(mRenderer->GetTexture("Assets/Radar.png"));
 
-	// Create spheres with audio components playing different sounds
+	// AudioComponent‚ð‚à‚Â‹…‘Ì‚ðì¬
 	mSphere = new Sphere(this);
 	
-
 	// Start music
-	mMusicEvent = mAudioSystem->PlayEvent("event:/Music");
+	//mMusicEvent = mAudioSystem->PlayEvent("event:/Music");
 }
 
 void Game::UnloadData()

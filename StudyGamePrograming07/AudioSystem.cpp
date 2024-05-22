@@ -254,7 +254,7 @@ void AudioSystem::Update(float deltaTime)
 		}
 	}
 
-	// 修了したイベントインスタンスを連想配列から消去
+	// 終了したイベントインスタンスを連想配列から消去
 	for (auto id : done)
 	{
 		mEventInstances.erase(id);
