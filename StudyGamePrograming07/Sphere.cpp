@@ -4,6 +4,7 @@
 #include "Renderer.h"
 #include "AudioSystem.h"
 #include "Game.h"
+#include "Mesh.h"
 #include "AudioComponent.h"
 #include "MeshComponent.h"
 

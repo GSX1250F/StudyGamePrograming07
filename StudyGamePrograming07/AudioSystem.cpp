@@ -55,13 +55,14 @@ bool AudioSystem::Initialize()
 	LoadBank("Assets/Master Bank.strings.bank");
 	LoadBank("Assets/Master Bank.bank");
 
+	/*
 	// ドップラー効果のパラメータ設定
 	mLowLevelSystem->set3DSettings(
 		1.0f,		// ドップラースケール。1=標準。より大きいと効果が誇張される。
 		50.0f,		// 1メートルはゲーム単位でいくつか。このゲームでは約50単位
 		1.0f		// 1のままとする。
 	);
-
+	*/
 	return true;
 }
 
@@ -290,8 +291,8 @@ void AudioSystem::SetListener(const Matrix4& viewMatrix)
 	// 逆ビューでは第２成分（GetYAxis）が上方向
 	listener.up = VecToFMOD(invView.GetYAxis());
 	// 速度はゼロにセットする ドップラー効果を使うときは修正)
-	//listener.velocity = { 0.0f, 0.0f, 0.0f }; 
-	listener.velocity = { 0.0f, 0.0f, 0.0f };
+	listener.velocity = { 0.0f, 0.0f, 0.0f }; 
+	//listener.velocity = { 0.0f, 0.0f, 300.0f };
 	// FMODにおくる（0はリスナーが一人だけという意味）
 	mSystem->setListenerAttributes(0, &listener);
 }

@@ -3,6 +3,7 @@
 #include "Renderer.h"
 #include "AudioSystem.h"
 #include "Actor.h"
+#include "Mesh.h"
 #include "SpriteComponent.h"
 #include "MeshComponent.h"
 #include "CameraActor.h"
@@ -102,7 +103,7 @@ void Game::ProcessInput()
 	{
 		actor->ProcessInput(keyState);
 	}
-	//mUpdatingActors = false;
+	mUpdatingActors = false;
 }
 
 void Game::HandleKeyPress(int key)

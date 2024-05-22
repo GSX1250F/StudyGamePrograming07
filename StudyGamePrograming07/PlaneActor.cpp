@@ -1,6 +1,7 @@
 #include "PlaneActor.h"
 #include "Game.h"
 #include "Renderer.h"
+#include "Mesh.h"
 #include "MeshComponent.h"
 
 PlaneActor::PlaneActor(Game* game)
