@@ -50,6 +50,17 @@ void AudioComponent::OnUpdateWorldTransform()
 {
 	// Update 3D events' world transforms
 	Matrix4 world = mOwner->GetWorldTransform();
+
+	// Practice ３人称リスナー対応。仮想ポジションを計算する
+	// 仮想ポジション = |プレイヤーとサウンドの距離|/|カメラとサウンドの距離|*カメラからサウンドのベクトル
+	Vector3 soundpos = mOwner->GetPosition();	//サウンドの位置
+	Vector3 camerapos = mOwner->GetGame()->GetCamera()->GetCameraPosition();
+	Vector3 playerpos = mOwner->GetGame()->GetCamera()->GetPosition();
+	Vector3 virtualpos = (playerpos - soundpos).Length() / (camerapos - soundpos).Length() * (soundpos - camerapos);
+	world = Matrix4::CreateScale(mOwner->GetScale());
+	world *= Matrix4::CreateTranslation(virtualpos);
+
+
 	for (auto& event : mEvents3D)
 	{
 		if (event.IsValid())

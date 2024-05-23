@@ -5,6 +5,7 @@
 #include <vector>
 #include "Math.h"
 #include "SoundEvent.h"
+#include "CameraActor.h"
 
 class Game
 {
@@ -25,6 +26,9 @@ public:
 	//ゲームウィンドウの大きさ
 	int mWindowWidth;
 	int mWindowHeight;
+
+	// Game-specific
+	class CameraActor* GetCamera() { return mCameraActor; }
 
 private:
 	void ProcessInput();

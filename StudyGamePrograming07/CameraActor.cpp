@@ -38,9 +38,9 @@ void CameraActor::UpdateActor(float deltaTime)
 
 	// Compute new camera from this actor
 	mCameraPos = GetPosition() - GetForward() * mLength1 + Vector3::UnitZ * mHeightFromActor;
-	Vector3 target = GetPosition() + GetForward() * mLength2;
+	Vector3 target = GetPosition() + GetForward() * mLength2;	// カメラからアクターへのベクトル＝見ている方向
 	Vector3 up = Vector3::UnitZ;
-	Matrix4 view = Matrix4::CreateLookAt(mCameraPos, target, up);		//カメラからアクターへのベクトル＝見ている方向
+	Matrix4 view = Matrix4::CreateLookAt(mCameraPos, target, up);
 
 	GetGame()->GetRenderer()->SetViewMatrix(view);
 	GetGame()->GetAudioSystem()->SetListener(view);
