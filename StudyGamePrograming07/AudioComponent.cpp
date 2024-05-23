@@ -57,9 +57,8 @@ void AudioComponent::OnUpdateWorldTransform()
 	Vector3 camerapos = mOwner->GetGame()->GetCamera()->GetCameraPosition();
 	Vector3 playerpos = mOwner->GetGame()->GetCamera()->GetPosition();
 	Vector3 virtualpos = (playerpos - soundpos).Length() / (camerapos - soundpos).Length() * (soundpos - camerapos);
-	world = Matrix4::CreateScale(mOwner->GetScale());
-	world *= Matrix4::CreateTranslation(virtualpos);
-
+	world = Matrix4::CreateScale(mOwner->GetScale());	//仮想ポジションで書き換え
+	world *= Matrix4::CreateTranslation(virtualpos);	//仮想ポジションで書き換え
 
 	for (auto& event : mEvents3D)
 	{

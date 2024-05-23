@@ -300,7 +300,7 @@ void Game::LoadData()
 	mSphere = new Sphere(this);
 	
 	// Start music
-	//mMusicEvent = mAudioSystem->PlayEvent("event:/Music");
+	mMusicEvent = mAudioSystem->PlayEvent("event:/Music");
 }
 
 void Game::UnloadData()
